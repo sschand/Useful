@@ -1,0 +1,33 @@
+
+Bootstrap: 
+	http://getbootstrap.com/
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+
+
+##########################	
+Icons:
+	http://fortawesome.github.io/
+	http://www.flaticon.com/
+
+
+##########################
+jQuery [UI]: 
+	https://code.jquery.com/ui
+
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>	
+
+	
+##########################
+Images:	http://upstash.com
+
+
+##########################
+Colors:	https://coolors.co/
+
+
+##########################
+HTML5 validator: https://validator.w3.org/
