@@ -1,0 +1,490 @@
+Sharol Chand - Algorithms (JS)
+
+
+************************************************************************************************************
+PUSHFRONT: Given an array and an additional value, insert this value at the beginning of the array. Do this without using any built-in array methods.
+
+****************
+
+Method 1:
+function pushFront(arr, num){
+	var arrNew = [];
+	arrNew[0] = num;
+	for (var i = 0; i < arr.length; i++){
+		arrNew[i + 1] = arr[i];
+	}
+	return arrNew;
+}
+
+****************
+
+Method 2:
+function pushFront(arr, num){
+	for (var i = arr.length; i > 0; i--){
+		arr[i] = arr[i - 1];
+	}
+	arr[0] =num;
+	return arr;
+}
+
+//console.log(pushFront1([2,4,6,7],9));
+
+
+************************************************************************************************************
+
+POPFRONT: Given an array, remove and return the value at the beginning of the array. Do this without using any built-in array methods except pop().
+
+****************
+Method 1:
+function popFront(arr){
+	var arrRev = [];
+	var x = 0;
+	for (var i = arr.length - 1; i >= 0; i--){
+		arrRev[x] = arr[i];
+		x++;
+	}
+	var temp = arrRev.pop();
+	return temp;
+}
+
+****************
+Method 2:
+function popFront(arr){
+	var temp = arr[0];
+	for (var i = arr.length - 1; i > 0; i--){
+		arr[i - 1] = arr[i];
+	}
+	return temp;
+}
+
+//console.log(popFront([2,4,6,7]));
+
+************************************************************************************************************
+INSERTAT: Given an array, an index, and an additional value, insert the value into the array at the given index. Do this without using any built-in array functions.
+
+****************
+Method 1:
+
+function insertAt(arr, index, num){
+	// Loop from the back of the array and move elements to the right, therefore increasing the size of the array by 1, stop when you get to the index where you want to add a new value
+
+	for(var i = arr.length; i > index; i--){
+  	arr[i] = arr[i - 1];
+	}
+
+	// at index, add your value
+
+	arr[index] = num;
+	return arr;
+}
+
+
+****************
+Method 2:
+function insertAt(arr, index, num){
+	// Declare new array 
+
+	var arrNew = [];
+
+	// Loop through and put all values from old array to new array up until the index, stop at index
+
+	for(var i = 0; i < index; i++){
+		arrNew[i] = arr[i];
+	}
+
+	// At index, add the additional value number to the new array at the index specified
+
+	arrNew[index] = num; 
+
+	// Loop from that index to the end of the old array and add all elements after the index to the new array
+
+	for(var i = index; i < arr.length; i++){
+		arrNew[index + 1] = arr[i];
+
+	// increment the index of the new array
+
+		index++;
+	}  
+	return arrNew;
+}
+
+//console.log(insertAt([3,10,4,5], 2, 30));
+
+************************************************************************************************************
+REMOVEAT: Given an array and an index into the array, remove and return the array value at that index. Do this without using any built-in array methods except pop().
+
+Method 1:
+
+function removeAt(arr, index){
+	var temp = arr[index];
+	for(var i = index; i < arr.length; i++){
+		arr[i] = arr[i + 1];
+	}
+	arr[arr.length - 1] = temp;
+	var removed = arr.pop();
+	//return arr;
+	return removed;
+}
+
+//console.log(removeAt([3,10,4,5], 2));
+
+****************
+Method 2:
+
+
+************************************************************************************************************
+GETCENTSCHANGE: Given an integer (299), break down how many dollars, quarters, dimes, nickels, and pennies make up this integer ('You have 2 dollards, 3 quarters, 2 dimes, and 4 pennies')
+
+	set new variable, amount, equal to the number, you'll be subtracting specific coin type 
+	get how many dollars (100s) there are in this amount
+	set amount to original amount subtracted by amount of dollars to get the remainder
+	get how many quarters (25s) there are in this amount
+	set amount variable to original amount subtracted by amount of quarters to get remainder
+	get how many dimes (10s) there area in the amount
+	set amount variable to amount subtracted by amount of dimes to get remainder
+	set amount varibale to amount subtracted by amount of nickels to get remainder
+	get how many nickels (5s) there are in the amount
+	get how many pennies (1s) there are in the amount, if you've been updated the amount, then your leftover amount is the amount 
+	return the string	
+
+function getChange(number){
+	var amount = number;
+	
+	var dollars = Math.floor(amount/100);
+	amount = amount - (dollars * 100);
+	
+	var quarters = Math.floor(amount/25);
+	amount = amount - (quarters * 25); 
+	
+	var dimes = Math.floor(amount/ 10);
+	amount = amount - (dimes * 10);
+	
+	var nickels = Math.floor(amount/5);
+	amount = amount - (nickels * 5);
+
+	var pennies = amount;
+
+	return "In "+number+" you have "+dollars+" dollars, "+quarters+" quarters, "+dimes+" dimes, "+nickels+" nickels, "+pennies+" pennies.";
+
+}
+
+console.log(getChange(306));
+
+
+************************************************************************************************************
+FACTORIAL: Given a number, find the product of the factorial - ex 5 - find 5*4*3*2*1
+
+Method 1:
+
+function factorial(num){
+  var product = 1;
+	
+	for(var i = num; i > 0; i--){
+		product = product * i;
+	}
+	return product;
+}
+
+****************
+Method 2:
+
+// Factorial recursively
+function factorial(num){
+	if(num == 1){
+		return 1;
+	}else{
+		return num * factorial(num - 1);
+	}
+}
+
+
+console.log(factorial(5));
+
+************************************************************************************************************
+SIGMA: Given a number, find the sum of the factorial - ex 5 - find 5+4+3+2+1
+
+Method 1:
+
+function sigma(num){
+	var sum = 0;
+	for(var i = num; i > 0; i--){
+		sum += i;
+	}
+	return sum;
+}
+
+****************
+Method 2:
+
+// sigma recursively
+function sigma(num){
+	if(num == 1){
+		return 1;
+	}else{
+		return num + factorial(num - 1);
+	}
+}
+console.log(sigma(5));
+
+
+************************************************************************************************************
+REVERSEARRAY: Given a numerical array, reverse the order of the values. The reversed array should have the same length, with the existing elements moved to other indices so that the order of elemtns is reversed. *cannot use a new array, must use the same array
+
+Method 1:
+/* Sudo code
+	Starting at both sides of the array, go through and switch the values;
+	Do the previous 1/2 as times as the length of the array
+	as you increment i index from the left side, decrement j index
+*/
+
+function revArr(arr){
+	  var mid = arr.length /2;
+	  var j = arr.length - 1;
+	
+	  for(var i = 0; i < mid; i++){
+			  var temp = arr[j];
+			  arr[j] = arr[i];
+			  arr[i] = temp;
+			  j--;
+		}
+	  return arr;
+	
+}
+
+console.log(revArr([1,2,3,4,5,6]));
+
+************************************************************************************************************
+RemoveNegatives: Implement a function removeNegatives() that accepts an array and removes any values that are less than zero. Optional: do this without two nested loops
+
+Method 1:
+/* Sudo code
+	initialize a variable that will count how many negative numbers you have aka times you'll have to do pop();
+	loop through the array
+	increment count if number is negative
+	loop as many times as necessary to get all negatives to the right
+	if the current value is negative, move it all the way to the right	
+	pop count times
+*/
+
+function removeNegatives(arr){
+	var countNeg = 0;  
+	for(var j = 0; j < arr.length - 1; j++){		
+		if(arr[j] < 0){
+			countNeg++;
+		}		
+		for(var i = 0; i < arr.length - 1; i++){			
+		  	if(arr[i] < 0){
+				var temp = arr[i];
+				arr[i] = arr[i + 1];
+				arr[i + 1] = temp;
+			}
+		}	
+		console.log(arr);	
+	}
+	while(countNeg > 0){
+		arr.pop();
+		countNeg--;
+	}		
+	return arr;	
+}
+
+****************
+
+Method 2:
+function removeNegatives(arr){
+    for(var i = 0; i < arr.length; i++){
+		if(arr[i] < 0){
+			var temp = arr[i];
+			arr[i] = arr[arr.length - 1];
+			arr[arr.length - 1] = temp;
+			arr.pop();
+			i--; //to check if last one is neg or not
+			}					
+		}	
+	  return arr;	
+}
+console.log(removeNegatives([-1,2,-3,-4,5]));
+
+************************************************************************************************************
+BST search: Given and array and value to look for, traverse through the tree by searching either the first or second half of the array. Break down the array into halves every time. Return true if the value is in that array.
+bst([1,2,3,4,5,6,7], 5)
+
+Method 1:
+/* Sudo code
+	Set 3 variables: m - middle index of array, a - first index of the array, z - last index of the array
+	Do this iteration n number of times
+
+*/
+
+Method 1:
+/*	sudo:
+ 	set variable a - first index
+	set variable z - last index
+	set variable m - mid index
+	
+	while a is less than z do
+	
+	check if array at mid OR if a[z] if a[a] is the value you're looking for 
+	if it the value return true and end 
+	
+	otherwise check if the number is less than the current value at mid index
+	  if so, then change z to be m-1
+		and m to be (z-a)/2
+		
+		repeat
+		
+	otherwise check if the number is more than the current value at mid index
+	  if so, then change a to be m+1
+		and m to be (z+a)/2
+		
+		repeat 
+		
+	else return true
+	
+	out of while loop 
+	return false
+*/	
+
+function bst_search(arr, n){
+	var a = 0;
+	var z = arr.length - 1;
+	var m = Math.floor(arr.length/2);
+
+	while (a < z){
+		if(n == arr[m] || n == arr[a] || n == arr[z]){
+			return true;
+		}else if(n < arr[m]){
+			z = m - 1;
+			m = Math.floor((z - a)/2);
+		}else if(n > arr[m]){
+			z = m + 1;
+			m = Math.floor((z + a)/2);
+		}				
+		}	
+	return false;
+}
+
+console.log(bst_search([1,2,3,4,5,6,7], -3));
+	
+********************
+Method 2:
+
+
+console.log(bst_search([1,2,3,4,5,6,7], -3));
+	
+	
+
+
+
+************************************************************************************************************
+RotateArray: Given an array and a number (which the amount of time you want to rotate the function to the right to), return the array after the rotation. The last value will go to the first position, etc.
+
+RotateArray([1,2,3,4], 2)  => [3,4,1,2]
+
+Method 1:
+/* sudo:
+ 	1. Put last element into a temp variable since this will go to the first position after all the shifts to the right are done
+	2. Starting at the last position, move the left of its value to the current position and keep doing this until you have 	   reached the beginning of the array
+	3. At the end place the temp value into the first position		
+	4. Repeat 1-3 as many times as stated by the n
+	5. Return array
+*/
+
+function rotateArray(arr, n){
+	  while (n > 0){
+	      var temp = arr[arr.length - 1];
+	  
+	      for(i = arr.length - 1; i > 0; i--){
+			      arr[i] = arr[i - 1];			
+		    }
+	
+	      arr[0] = temp;
+			  n--;
+		}
+	  return arr;	
+}
+
+console.log(rotateArray([1,2,3,4], 3));
+
+
+************************************************************************************************************
+Selection Sort: divides the input list into two parts: the sub-list of items already sorted, which is built up from left to right at the front (left) of the list, and the sub-list of items remaining to be sorted that occupy the rest of the list. Initially, the sorted sub-list is empty and the unsorted sub-list is the entire input list. The algorithm proceeds by finding the smallest (or largest, depending on sorting order) element in the unsorted sub-list, exchanging it with the leftmost unsorted element (putting it in sorted order), and moving the sub-list boundaries one element to the right.
+https://vimeo.com/76380380
+https://upload.wikimedia.org/wikipedia/commons/9/94/Selection-Sort-Animation.gif
+
+Method 1:
+/* sudo: 
+	1. declare counter variable that you'll loop through
+	2. loop through the array until the end of the array, increment once at the end of the iteration
+	3. declare new variables to hold current index and current index value
+	4. loop through the rest of the array until you find a number less than current number
+		5. if you find such number, reset the min value to this new value and reset the minIndex to this index
+	6. after you find the min from the rest of the array, swap the current value with that new min value
+	7. swap with temp variable
+	8. increment count and repeet 2-8 as necessary
+	9. return array;
+*/
+
+JS:
+function selectionSort(arr){
+    var x = 0;
+	
+    while(x < arr.length){
+    	var min = arr[x];
+    	var minIndex = x;
+
+    	for(var i = x + 1; i < arr.length; i++){    		
+    		if(arr[i] < min){
+    			min = arr[i];
+    			minIndex = i;    			
+    		}
+    	}
+
+    	var temp = arr[x];
+    	arr[x] = arr[minIndex];
+    	arr[minIndex] = temp;
+
+    	x++;
+    }
+    return arr;
+}
+
+console.log(selectionSort([6,2,10,5]));
+
+PHP:
+
+function selectionSort($array){
+	$x = 0;
+
+	while($x < count($array)){
+		$min = $array[$x];
+		$minIndex = $x;
+
+		for($i = $x + 1; $i < count($array); $i++){
+			if($array[$i] < $min){
+				$min = $array[$i];
+				$minIndex = $i;
+			}
+		}
+
+		$temp = $array[$x];
+		$array[$x] = $array[$minIndex];
+		$array[$minIndex] = $temp;
+
+		$x++;
+	}
+	return $array;
+}
+
+echo "<pre>";
+print_r(selectionSort([6,2,10,5]));
+echo "</pre>";
+
+
+********************
+Add these functions:
+
+********************
+
+
+************************************************************************************************************
