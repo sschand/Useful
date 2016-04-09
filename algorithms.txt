@@ -69,7 +69,7 @@ function insertAt(arr, index, num){
 	// Loop from the back of the array and move elements to the right, therefore increasing the size of the array by 1, stop when you get to the index where you want to add a new value
 
 	for(var i = arr.length; i > index; i--){
-  	arr[i] = arr[i - 1];
+  		arr[i] = arr[i - 1];
 	}
 
 	// at index, add your value
@@ -228,7 +228,7 @@ console.log(sigma(5));
 
 
 ************************************************************************************************************
-REVERSEARRAY: Given a numerical array, reverse the order of the values. The reversed array should have the same length, with the existing elements moved to other indices so that the order of elemtns is reversed. *cannot use a new array, must use the same array
+REVERSEARRAY: Given a numerical array, reverse the order of the values. The reversed array should have the same length, with the existing elements moved to other indices so that the order of elements is reversed. *cannot use a new array, must use the same array
 
 Method 1:
 /* Sudo code
@@ -452,7 +452,6 @@ function selectionSort(arr){
 console.log(selectionSort([6,2,10,5]));
 
 PHP:
-
 function selectionSort($array){
 	$x = 0;
 
@@ -480,10 +479,152 @@ echo "<pre>";
 print_r(selectionSort([6,2,10,5]));
 echo "</pre>";
 
+************************************************************************************************************
+Second-to-Last: Given an array, return the second-to-last-element
+[3,7,4,8,12] => 8
+
+Method 1:
+function secondToLast(arr){
+	if(arr.length < 2){
+	  	return false;
+	}else{
+	  	return arr[arr.length -2];
+	}	
+}
+
+console.log(secondToLast([3,7,4,8,12]));
+
+************************************************************************************************************
+Nth-to-Last: Given an array return the element that is N-from-array's end
+[3,7,4,8,12], 3 => 7
+
+Method 1:
+function nToLast(arr,n){
+	  if(n < 0 || n >= arr.length){
+			  return false;
+		}else{
+			  return arr[arr.length - n - 1];
+		}	
+}
+
+console.log(nToLast([3,7,4,8,12], 3));
+
+************************************************************************************************************
+Second-Largest: Given an array, return the second-largest element
+[3,7,4,8,12] -> 8
+
+Method 1:
+function secondLargest(arr){
+  	var max = arr[0];
+	var min = arr[0]; //just a number that is anything but the max, min for sure is not the max
+	
+	for(var i = 0; i < arr.length; i++){
+		if(max < arr[i]){
+			max = arr[i];
+		}
+		if(min > arr[i]){
+			min = arr[i];
+		}
+	}
+	
+	n = 2; // which largest
+	
+	while(n > 1){ //find next max
+		for(var j = 0; j < arr.length; j++){
+			if(max > arr[j] && min < arr[j]){
+				min = arr[j];
+			}
+		}
+		n--;
+	}	
+	max = min; // found this next max and stored in min	
+	return max;
+}
+
+
+function secondLargest(arr){
+	var max = arr[0];
+	var notMax = arr[0];
+	
+	for(var i = 0; i < arr.length; i++){
+		if(arr[i] > max){
+			max = arr[i];			
+		}
+		
+		if(arr[i] < notMax){
+			notMax = arr[i];
+		}
+	}
+	
+	for(var j = 0; j < arr.length; j++){
+		if(max > arr[j] && notMax < arr[j]){
+			notMax = arr[j];
+		} 
+	}
+	console.log(notMax);
+	return notMax;
+}
+
+
+console.log(secondLargest([3,7,4,8,12]));
+************************************************************************************************************
+Nth-Largest: Given an array, return the nth-largest element
+[3,7,4,8,12],3 -> 7
+
+function nLargest(arr,n){
+	var max = arr[0];
+	var notMax = arr[0];
+	
+	for(var i = 0; i < arr.length; i++){
+		if(arr[i] > max){
+			max = arr[i];
+		}
+		if(arr[i] < notMax){
+			notMax = arr[i];
+		}
+	}
+	
+	while(n > 1){
+		var notmax2 = notMax;		
+		for(var j =0; j< arr.length; j++){
+			if(max > arr[j] && notmax2 < arr[j]){
+				notmax2 = arr[j];
+			}
+		}		
+		max = notmax2;
+		n--;
+	}	
+	console.log(max);
+}
+
+nLargest([3,6,1,4,7], 3);
+************************************************************************************************************
+ArrayConcat: Replicate the array concat() function built into JS. Create a standalone function that accepsts two arrays. Return a new array containing the first array's elements, followed by the second array's elements. Do not 
+[3,7,4,8,12],3 -> 7
+
+
+Method 1:
+function arrConcat(arr1, arr2){
+	var arrNew = [];
+	
+	for(var i = 0; i < arr1.length; i++){
+		arrNew.push(arr1[i]);
+	}
+	
+	for(var i = 0; i < arr2.length; i++){
+		arrNew.push(arr2[i]);
+	}
+	return arrNew;
+}
+
+console.log(arrConcat([1,2,5], [5,2,5]));
+
+************************************************************************************************************
+
 
 ********************
 Add these functions:
-
+fasterFactorial
 ********************
 
 

@@ -4,6 +4,9 @@ Links to libraries: https://developers.google.com/speed/libraries/
 
 
 ##########################	
+Links to cdns: https://cdnjs.com/
+
+##########################	
 Bootstrap: 
 	http://getbootstrap.com/
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
