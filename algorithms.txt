@@ -193,7 +193,7 @@ function factorial(num){
 console.log(factorial(5));
 
 ************************************************************************************************************
-SIGMA: Given a number, find the sum of the factorial - ex 5 - find 5+4+3+2+1
+SIGMA: Given a number, find the sum of the number + number -1 all the way till number = 1 - ex 5 - find 5+4+3+2+1
 ****************
 
 Method 1:
@@ -213,7 +213,7 @@ function sigma(num){
 	if(num == 1){
 		return 1;
 	}else{
-		return num + factorial(num - 1);
+		return num + sigma(num - 1);
 	}
 }
 console.log(sigma(5));
@@ -467,6 +467,9 @@ echo "</pre>";
 
 ************************************************************************************************************
 BubbleSort: 
+/* Pseudo: 
+
+*/
 
 https://upload.wikimedia.org/wikipedia/commons/c/c8/Bubble-sort-example-300px.gif
 ******************
@@ -607,11 +610,38 @@ function arrConcat(arr1, arr2){
 console.log(arrConcat([1,2,5], [5,2,5]));
 
 ************************************************************************************************************
+FasterFactorial: If factorial of that number already exists, find that product and return that otherwise find the factorial, add it to the factorials array and return that product
+*****************
 
+Method 1:
+var factorials = [1, 2, 6, 24, 120];
+var lastFactorial;
+
+function fasterFactorial(n){
+	var product = 1;
+	
+	if(n <= factorials.length){
+		console.log('exists');
+		return factorials[n -1];
+	}
+	else{
+		lastFactorial = 5;
+		
+	  for(var i = lastFactorial; i <= n; i++){
+		  product = factorials[lastFactorial - 1] * i;
+		  factorials.push(product);
+	  }
+	
+	  return product;
+	}
+	
+}
+
+console.log(fasterFactorial(4));
+console.log(factorials);
 
 ********************
 Add these functions:
-fasterFactorial
 insertionSort
 ********************
 
