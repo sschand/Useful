@@ -659,6 +659,57 @@ function fasterFactorial(n){
 console.log(fasterFactorial(4));
 console.log(factorials);
 
+************************************************************************************************************
+Arr2Map: Given two arrays, create an associative array (map) containing keys of the first, and values of the second. 
+For arr1 = ['abc', 3, 'yo'] and arr2 = [42,'wassup',true] you should return {'abc' : 42, 3: 'wassup', 'yo': true}
+*****************
+
+function arr2Map(arr1, arr2){
+	var obj = {};
+	for(var i = 0; i < arr1.length; i++){
+		obj[arr1[i]] = arr2[i];
+	}
+	
+	return obj;
+}
+
+console.log(arr2Map(['abc', 3, 'yo'],[42,'wassup',true]));
+
+************************************************************************************************************
+ReverseString: Implement a function reverseString(str) that, given a string, will return the string of the same length but with characters reversed. Example: given 'creature', return 'erutaerc' Do not use the build=in reverse() function
+*****************
+
+function reverseString(str){
+  var arr = str.split('');
+	
+	console.log(arr);
+	for(var i = 0; i < str.length/2; i++){
+		var temp = arr[i];
+		arr[i] = arr[arr.length -1 -i];
+		arr[arr.length -1 -i] = temp;
+	}
+	return arr.join("");
+}
+
+console.log(reverseString('creature'));
+
+************************************************************************************************************
+InvertHash: Create invertHash(assocArr) that converst a hash's keys to values and values to corresponding keys. 
+You will need to learn and use a JS for...in here!
+Example: Given	 you should return {'Zaphod' : 'name', 2 : 'numHeads'}
+*****************
+
+function invertHash(obj){
+  var newObj = {};
+	for(var key in obj){
+		newObj["'"+obj[key]+"'"] = key;
+	}
+	
+	return newObj;
+}
+
+console.log(invertHash( {'name' : 'Zaphod', 'numHeads' : 2}));
+
 ********************
 Add these functions:
 insertionSort
